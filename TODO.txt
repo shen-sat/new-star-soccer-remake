@@ -1,0 +1,24 @@
+Main objective:
+Re-make New Star Soccer for web
+
+Gameplay basics:
+- Ball controls
+- Ball movement
+- Generate obstacles (wall)
+- Keeper
+
+Ball controls:
+I'd like it to feel as console-y as possible, so I'll avoid using mouse.
+- direction: use left/right arrow keys for arrow clockwise- and anti-clockwise movement
+- hit A to confiirm
+- power: show close-up of ball. Move dot higher/lower
+- hit A to confirm
+
+Ball movement:
+This should be as realistic as possible. Aids prediction. Sense of fairness.
+- straight line
+- if ball hit below midline, it will leave ground
+- if ball hits ground it can bounce
+- ball will eventually come to a stop 
+
+
