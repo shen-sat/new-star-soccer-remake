@@ -1,7 +1,7 @@
 const config = {
 	type: Phaser.AUTO,
-	width: 480,
-	height: 240,
+	width: 1206,
+	height: 1812/2,
 	backgroundColor: '#000',
 	roundPixels: true,
 	pixelArt: true,
@@ -9,6 +9,9 @@ const config = {
 	autoCenter: Phaser.Scale.Center.CENTER_BOTH,
 	physics: {
 		default: 'arcade',
+		arcade: {
+			debug: true
+		}
 	},
 	scene: [ LevelOne ]
 };
