@@ -21,7 +21,6 @@ class LevelOne extends Phaser.Scene {
 		this.arrow.setScale(this.arrowScale);
 		this.arrow.setOrigin(0,0.5);
 		this.ball = this.physics.add.sprite(this.cameras.main.width/2 + 50, this.cameras.main.height/2 + 50, 'ball');
-		// this.ball.setScale(2)
 		this.ball.setDamping(true);
 		this.ball.setDrag(0.98)
 		
@@ -33,7 +32,7 @@ class LevelOne extends Phaser.Scene {
 		this.arrowStartingScale = this.arrowScale;
 		this.arrowScaleXMax = 3.5;
 		this.ballStartingSpeed = this.ballSpeed;
-		this.ballMaxSpeed = 500;
+		this.ballMaxSpeed = this.ballSpeed * 3;
 
 		this.ballKickable = true;
 
@@ -56,8 +55,6 @@ class LevelOne extends Phaser.Scene {
 			frameRate: 12,
 			repeat: -1
 		});
-
-		this.ball.play('roll');
 	}
 
 	update() {
@@ -70,6 +67,8 @@ class LevelOne extends Phaser.Scene {
 		} else if (this.keys.left.isDown) {
 			this.arrow.rotation -= 0.05
 		}
+
+		this.ball.rotation = this.arrow.rotation + 1.570796;  //90 degrees in radians
 
 		if (this.keys.up.isDown) {
 			this.arrow.scaleX = Math.min(this.arrow.scaleX + 0.02, this.arrowScaleXMax)
@@ -86,17 +85,19 @@ class LevelOne extends Phaser.Scene {
 			this.physics.velocityFromRotation(this.arrow.rotation, this.ballSpeed, this.ball.body.velocity);	
 		}
 
+
 		if (this.ball.body.speed > 0) {
 			this.ballKickable = false;
 			this.arrow.setAlpha(0);
 			this.arrow.scaleX = this.arrowStartingScale
 			this.ballSpeed = this.ballStartingSpeed
+			this.ball.play('roll', true);
+			this.ball.anims.setTimeScale(this.ball.body.speed/50); //this will have to be adjusted depending on 'feel' of roll
 		} else {
-			
+			this.ball.anims.stop()
 			this.ballKickable = true
 			this.arrow.setAlpha(1);
 		}
-
 
 		
 	}
@@ -107,5 +108,7 @@ class LevelOne extends Phaser.Scene {
 
 	stopBall() {
 		this.ball.body.setVelocity(0)
+
 	}
+
 }
