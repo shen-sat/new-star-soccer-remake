@@ -7,7 +7,7 @@ class LevelOne extends Phaser.Scene {
 	preload() {
 		this.load.image('pitch', 'assets/sensible-pitch-bw-no-line.png');
 		// this.load.image('ball', 'assets/square.png');
-		this.load.image('arrow', 'assets/line.png');
+		this.load.image('arrow', 'assets/line-v3.png');
 		this.load.image('post-left', 'assets/goal-post-left.png');
 		this.load.image('post-right', 'assets/goal-post-right.png');
 		this.load.image('net-boundary', 'assets/net-boundary.png');
