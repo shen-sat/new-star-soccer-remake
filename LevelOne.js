@@ -55,6 +55,9 @@ class LevelOne extends Phaser.Scene {
 			frameRate: 12,
 			repeat: -1
 		});
+
+		this.ballReadyToCurl = false;
+		this.startingDirection = 0;
 	}
 
 	update() {
@@ -81,8 +84,16 @@ class LevelOne extends Phaser.Scene {
 
 		}
 
+		if (this.ballReadyToCurl) {
+			console.log(this.ball.body.speed) 
+			this.startingDirection += 0.01745329
+			this.physics.velocityFromRotation(this.startingDirection, this.ball.body.speed, this.ball.body.velocity) 
+		}
+
 		if (this.justPressed(this.kickButton) && this.ballKickable) {  
-			this.physics.velocityFromRotation(this.arrow.rotation, this.ballSpeed, this.ball.body.velocity);	
+			this.physics.velocityFromRotation(this.arrow.rotation, this.ballSpeed, this.ball.body.velocity);
+			this.ballReadyToCurl = true;
+			this.startingDirection = this.arrow.rotation;	
 		}
 
 
@@ -93,6 +104,7 @@ class LevelOne extends Phaser.Scene {
 			this.ballSpeed = this.ballStartingSpeed
 			this.ball.play('roll', true);
 			this.ball.anims.setTimeScale(this.ball.body.speed/50); //this will have to be adjusted depending on 'feel' of roll
+			// this.ball.rotation += 0.1745329
 		} else {
 			this.ball.anims.stop()
 			this.ballKickable = true
