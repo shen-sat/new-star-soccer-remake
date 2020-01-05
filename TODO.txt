@@ -1,14 +1,9 @@
-Main objective:
-Re-make New Star Soccer for web, just the tutorial section
+Next: goalkeeper
+- dive is made up of different size 'frames'. As keepr dives from standing to outstretched, the frame becomes longer
+- once ball reaches radius/zone around keeper, they dive
+- ball hits and bounces off keeper
 
-Levels
-- score goal
 
-Gameplay basics:
-- Ball power and direction along ground
-
-Next step:
-Stop ball moving once it hits net boundary
 
 
 
